@@ -1,4 +1,4 @@
-Grrreader - test1
+Grrreader - test2
 =========
 
 Grrreader - Gxxgle-Reader-inspired Rss READER
