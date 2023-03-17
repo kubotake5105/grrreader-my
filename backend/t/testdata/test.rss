@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>DailyHckr</title>
+	<atom:link href="http://hylom.net/feed/" rel="self" type="application/rss+xml" />
+	<link>http://hylom.net</link>
+	<description>Hack, Hacker, Hackest</description>
+	<lastBuildDate>Thu, 30 Aug 2012 10:51:42 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.5.1</generator>
+		<item>
+		<title>Mac OS X上でのEmacs 24設定（主にoptionキー周り）</title>
+		<link>http://hylom.net/2012/08/08/emacs-24-on-mac-os-x/</link>
+		<comments>http://hylom.net/2012/08/08/emacs-24-on-mac-os-x/#comments</comments>
+		<pubDate>Wed, 08 Aug 2012 14:02:42 +0000</pubDate>
+		<dc:creator>hylom</dc:creator>
+				<category><![CDATA[Hacks]]></category>
+		<category><![CDATA[emacs]]></category>
+		<category><![CDATA[macosx]]></category>
+
+		<guid isPermaLink="false">http://hylom.net/?p=1547</guid>
+		<description><![CDATA[　Mac OS XでATOKを使っていると、通常「¥」キーでは¥が入力される。しかし、Mac OS X（という [...]]]></description>
+				<content:encoded><![CDATA[<p>　Mac OS XでATOKを使っていると、通常「¥」キーでは¥が入力される。しかし、Mac OS X（というかUTF-8）では¥と\は違う物として扱われる。そのため、色々と面倒くさいことが発生する。ことえりでは「¥」キーで\を入力する設定があるのだが、ATOKにはない。キーマップを書き換えて対応する、という方法もあるのだが、そういった方法は個人的に嫌いなので、Emacs側の設定で何とかすることにする。</p>
+<p>　設定は以下の3点。</p>
+<pre>
+(setq mac-option-modifier nil)
+(setq mac-command-modifier 'meta)
+(global-set-key (kbd "C-M-¥") 'indent-region)
+</pre>
+<p>1行目でoptionキーをoptionキーとして認識させ、2行目でcommandキーをmetaキーとして認識させる。最後に、なぜかcontrol＋command＋option＋¥がC-M-\として認識されないので、代わりにC-M-¥にindent-regionを割り当てる。</p>
+<p>とりあえず、これでしばらくはしのげるかなと。</p>
+]]></content:encoded>
+			<wfw:commentRss>http://hylom.net/2012/08/08/emacs-24-on-mac-os-x/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>64ビット版CentOSで32ビット用プログラムを動かす</title>
+		<link>http://hylom.net/2012/07/26/run-32bit-program-on-64bit-centos/</link>
+		<comments>http://hylom.net/2012/07/26/run-32bit-program-on-64bit-centos/#comments</comments>
+		<pubDate>Thu, 26 Jul 2012 09:17:02 +0000</pubDate>
+		<dc:creator>hylom</dc:creator>
+				<category><![CDATA[Hacks]]></category>
+		<category><![CDATA[centos]]></category>
+		<category><![CDATA[linux]]></category>
+
+		<guid isPermaLink="false">http://hylom.net/?p=1545</guid>
+		<description><![CDATA[　64ビットのLinux環境で32ビットのプログラムを動かそうとする場合、32ビット版のライブラリが不足してい [...]]]></description>
+				<content:encoded><![CDATA[<p>　64ビットのLinux環境で32ビットのプログラムを動かそうとする場合、32ビット版のライブラリが不足していて実行できない場合がある。</p>
+<pre>
+/lib/ld-linux.so.2: bad ELF interpreter: No such file or directory
+</pre>
+<p>　と出た場合、次のように32ビット版のlibstdc++をインストールすればOK。</p>
+<pre>
+$ sudo yum install libstdc++.i686
+</pre>
+]]></content:encoded>
+			<wfw:commentRss>http://hylom.net/2012/07/26/run-32bit-program-on-64bit-centos/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>CentOS 6の初期設定メモ1</title>
+		<link>http://hylom.net/2012/07/24/centos-initial-setup/</link>
+		<comments>http://hylom.net/2012/07/24/centos-initial-setup/#comments</comments>
+		<pubDate>Tue, 24 Jul 2012 09:25:48 +0000</pubDate>
+		<dc:creator>hylom</dc:creator>
+				<category><![CDATA[未分類]]></category>
+		<category><![CDATA[centos]]></category>
+		<category><![CDATA[hack]]></category>
+		<category><![CDATA[linux]]></category>
+
+		<guid isPermaLink="false">http://hylom.net/?p=1541</guid>
+		<description><![CDATA[　CentOS 6の初期設定メモその1。ユーザーを作成してSSHの設定を行うまで。 ユーザーの作成 # gro [...]]]></description>
+				<content:encoded><![CDATA[<p>　CentOS 6の初期設定メモその1。ユーザーを作成してSSHの設定を行うまで。</p>
+<h4>ユーザーの作成</h4>
+<pre>
+# groupadd hylom
+# useradd -d /home/hylom -g hylom -m hylom
+# chsh -s /bin/bash hylom
+# passwd hylom
+</pre>
+<h4>sudoの設定</h4>
+<p>　sudoersファイルを編集する。</p>
+<pre>
+# yum install sudo
+# visudo
+</pre>
+<p>　sudoersファイルに次のようにhylomを追加。</p>
+<pre>
+## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+hylom   ALL=(ALL)       ALL
+</pre>
+<h4>SSH関連の設定</h4>
+<p>　SSH公開鍵を作成する。</p>
+<pre>
+# su hylom
+$ ssh-keygen
+$ cd ~/.ssh
+$ vi authorized_keys 
+$ chmod 600 authorized_keys
+</pre>
+<p>　authorized_keysにはログインに使用する公開鍵をコピー＆ペーストしておく。</p>
+<p>　SSHサーバーの設定。</p>
+<pre>
+# vi /etc/ssh/sshd_config
+</pre>
+<p>　sshd_configファイルでPermitRootLoginをnoに、PasswordAuthenticationをnoに設定し、rootでのログインを禁止＆認証に公開鍵必須とする。</p>
+<pre>
+#PermitRootLogin yes
+PermitRootLogin no
+</pre>
+<pre>
+#PasswordAuthentication yes
+PasswordAuthentication no
+</pre>
+<h4>ホスト名の設定</h4>
+<pre>
+# vi /etc/sysconfig/network
+# hostname &lt;hostname&gt;
+</pre>
+]]></content:encoded>
+			<wfw:commentRss>http://hylom.net/2012/07/24/centos-initial-setup/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>CentOS 5を延命させる</title>
+		<link>http://hylom.net/2012/04/17/centos-5-with-epel/</link>
+		<comments>http://hylom.net/2012/04/17/centos-5-with-epel/#comments</comments>
+		<pubDate>Tue, 17 Apr 2012 05:14:56 +0000</pubDate>
+		<dc:creator>hylom</dc:creator>
+				<category><![CDATA[Hacks]]></category>
+		<category><![CDATA[centos]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[programming]]></category>
+
+		<guid isPermaLink="false">http://hylom.net/?p=1537</guid>
+		<description><![CDATA[　CentOS 5を使っていると、含まれているソフトウェアのバージョンが古かったり、そもぞもリポジトリにそのソ [...]]]></description>
+				<content:encoded><![CDATA[<p>　CentOS 5を使っていると、含まれているソフトウェアのバージョンが古かったり、そもぞもリポジトリにそのソフトウェアがなかったりして困ることがある。さっさとCentOS 6にアップデートすればいい話なのだが、面倒くさいとか、そもそもフルバックアップしないと行けないとか色々と大変だったりするので（CentOS 5からCentOS 6へのアップデートは再インストールが推奨されている）、なんとかまだCentOS 5をこのまま使いたい、そんな時に役立つのがEPEL。</p>
+<p>　<a href="http://fedoraproject.org/wiki/EPEL/FAQ">EPEL</a>は「Extra Packages for Enterprise Linux」の略で、Fedora Projectが運営しているRed Hat Enterprise Linuxおよびその互換OS向けのパッケージリポジトリ。同種のものにrpmforgeがあるわけですが、Fedora Projectが運営しているということでEPELのほうがやや信頼感が（個人的には）高いということでこちらを使うことに。</p>
+<p>　導入方法は簡単。以下を実行するだけ。</p>
+<pre>
+$ sudo rpm -Uvh http://ftp.jaist.ac.jp/pub/Linux/Fedora/epel/5/i386/epel-release-5-4.noarch.rpm
+</pre>
+<p>　これでgitとかpython26とかをyumでインストールできるようになります。</p>
+]]></content:encoded>
+			<wfw:commentRss>http://hylom.net/2012/04/17/centos-5-with-epel/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Windows Azureメモその2：Azure Drive</title>
+		<link>http://hylom.net/2012/03/16/windows-azure%e3%83%a1%e3%83%a2%e3%81%9d%e3%81%ae2%ef%bc%9aazure-drive/</link>
+		<comments>http://hylom.net/2012/03/16/windows-azure%e3%83%a1%e3%83%a2%e3%81%9d%e3%81%ae2%ef%bc%9aazure-drive/#comments</comments>
+		<pubDate>Fri, 16 Mar 2012 13:17:31 +0000</pubDate>
+		<dc:creator>hylom</dc:creator>
+				<category><![CDATA[Hacks]]></category>
+		<category><![CDATA[azure]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[windowsazure]]></category>
+
+		<guid isPermaLink="false">http://hylom.net/?p=1534</guid>
+		<description><![CDATA[　Azure Driveを利用するコード例がいくつかWebにあるのだが、「Windows Azure アプリケ [...]]]></description>
+				<content:encoded><![CDATA[<p>　Azure Driveを利用するコード例がいくつかWebにあるのだが、「<a href="http://code.msdn.microsoft.com/windowsazure/5-Azure-Storage-Client-API-5710f880">Windows Azure アプリケーション開発入門: 第 5 回 Azure ストレージ &#038; Storage Client API を極める</a>」は間違っているので注意。これで1日潰れた。</p>
+<p>　全体としては内容はほぼ正しいのだが、最後に紹介されているドライブを作成するコードは現状（Azure SDK 1.6）では正しく動かない。問題の個所は、PageBlobを作成している部分。CloudDrive</p>
+<pre>
+  //PageBlobの作成
+   pgAzure.Create(nDriveSize * 1024 * 1024);
+</pre>
+<p>「<a href="http://social.msdn.microsoft.com/Forums/ja-JP/windowsazureja/thread/050a9876-00b2-4df1-9027-3fa56ebfcdb5/">Windows Azure 実環境上で CloudDrive の Mount メソッドが Unknown Error を発生させる</a>」で述べられているが、CloudDriveのCreateメソッドを呼ぶ前に利用するBlobを作成していてはダメ。CloudDriveのCreateメソッドではBlobのフォーマット（VHD作成）も行っているため、CloudPageBlobのCreateメソッドでBlobを作成してしまうとマウントできなくなる模様。</p>
+]]></content:encoded>
+			<wfw:commentRss>http://hylom.net/2012/03/16/windows-azure%e3%83%a1%e3%83%a2%e3%81%9d%e3%81%ae2%ef%bc%9aazure-drive/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Windows Azureメモその1</title>
+		<link>http://hylom.net/2012/03/07/windows-azure-memo-1/</link>
+		<comments>http://hylom.net/2012/03/07/windows-azure-memo-1/#comments</comments>
+		<pubDate>Wed, 07 Mar 2012 13:40:50 +0000</pubDate>
+		<dc:creator>hylom</dc:creator>
+				<category><![CDATA[Hacks]]></category>
+		<category><![CDATA[azure]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[windows]]></category>
+
+		<guid isPermaLink="false">http://hylom.net/?p=1527</guid>
+		<description><![CDATA[最近Windows Azureを触っているので備忘録的にはまったポイントをメモ（その1）。 SDKのバージョン [...]]]></description>
+				<content:encoded><![CDATA[<p>最近Windows Azureを触っているので備忘録的にはまったポイントをメモ（その1）。</p>
+<h4>SDKのバージョン</h4>
+<p>Windows AzureはSDKのバージョンアップとともに機能が増えたり仕様が変わっているため、古いバージョンのドキュメントを参照していると現状では仕様が変わっていたりしてハマる。特に1.3ではIIS周りの仕様変更など大きな変更点があったので、1.3未満のドキュメントを参照している場合注意が必要。特にFull IISあたり。</p>
+<p>参考：<a href='http://www.atmarkit.co.jp/fdotnet/special/azuresdk13_01/azuresdk13_01_01.html'>Windows Azure 1.3の新機能の概要 － ＠IT</a></p>
+<h4>ディレクトリ構成</h4>
+<p>Windows Azureにデプロイした際、アップロードしたファイルがどのドライブに保存されるかは不定のようだ。E:の場合もあればF:の場合もある。WebRoleの場合、これらのドライブの、「¥approot¥」以下と「¥siteroot¥0¥」以下にファイルが展開される。¥approot¥と¥siteroot¥0¥以下には同じものが展開されるが、HTTPサーバーのルートとなるのは¥siteroot¥0¥のほう。</p>
+<h4>Web配置</h4>
+<p>Web配置では¥siteroot¥0¥以下が更新され、¥approot¥側は更新されない。</p>
+<h4>スタートアップタスクとその実行フォルダ</h4>
+<p>IISの設定を変更したい場合、スタートアップタスクとしてバッチファイルを実行するよう指定して処理するのが定石。スタートアップタスク実行時のカレントディレクトリは明言されていないが、Windows Azure環境では¥approot¥bin¥以下になる模様（エミュレータ上ではまた別のディレクトリになるので注意）。スタートアップタスクとして実行したいファイルのプロパティで「出力ディレクトリにコピー」を「常にコピーする」などに設定すると、そのファイルがこのディレクトリに配置される。サブディレクトリ以下にあるファイルはbin以下にそのサブディレクトリが作成されて配置される。</p>
+<h4>「ビルドアクション」の設定</h4>
+<p>ビルドアクションが「なし」のファイルはapprootおよびsiteroot以下に配置されず無視される。必要なファイルは「コンテンツ」に設定しておけばよい。</p>
+<h4>バッチファイル</h4>
+<p>Visual Studioでテキストファイルを作成するとBOM付きUTF-8エンコードのファイルができるのだが、これをバッチファイルとして実行しようとするとBOMが認識されずにエラーとなる。</p>
+<h4>エミュレータと実環境の違い</h4>
+<p>ディレクトリ配置が異なる。本番環境で¥approot¥bin¥に配置されるディレクトリは別の場所に配置される。</p>
+<h4>リモートデスクトップ</h4>
+<p>Azure SDK 1.6以降では発行時のウィザードでロールへのリモートデスクトップ接続の設定を行えるが、ここで「自動」を選択しないと、なぜかリモートデスクトップ接続もWeb配置もできなくなることがある（体験談）。前者はロールの再起動でなぜかできるようになったが、後者はリモートデスクトップが可能になった状態でもなぜかできなかった……。</p>
+<p>あと、リモートデスクトップについてはWindows以外のクライアントもあるが、接続にウィザードで作成した証明書が必要なので、発行に用いたWindows環境以外から接続したい場合は証明書関係の設定が必要。ということでMacやLinuxから接続できるかは不明。</p>
+]]></content:encoded>
+			<wfw:commentRss>http://hylom.net/2012/03/07/windows-azure-memo-1/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Emacsのキーバインディング設定</title>
+		<link>http://hylom.net/2012/01/16/emacs-keybinding-configs/</link>
+		<comments>http://hylom.net/2012/01/16/emacs-keybinding-configs/#comments</comments>
+		<pubDate>Mon, 16 Jan 2012 11:06:30 +0000</pubDate>
+		<dc:creator>hylom</dc:creator>
+				<category><![CDATA[未分類]]></category>
+
+		<guid isPermaLink="false">http://hylom.net/?p=1521</guid>
+		<description><![CDATA[　Emacsの設定ファイル（.emacsなど）でキーバインディングを設定する場合の作法はググると色々なものが出 [...]]]></description>
+				<content:encoded><![CDATA[<p>　Emacsの設定ファイル（.emacsなど）でキーバインディングを設定する場合の作法はググると色々なものが出てくるのだが、最近では<a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Sequences.html">kbd関数</a>を利用するのが一般的なようだ。コントロールキー同時押しや特殊キーに関数を割り当てる場合、一昔前は分かりにくい表記で書いていたが、kbd関数を使うと割と簡潔にキーを指定できる。</p>
+<p>　たとえばCtrl＋Shift＋Insertというキーに「add-anchor」関数を割り当てる場合は下記のようにする。</p>
+<pre>
+(global-set-key (kbd "C-S-&lt;insert&gt;") 'add-anchor)
+</pre>
+<p>　あと、global-set-key関数を使う以外に、define-key関数を「global-map」引数付きを使う人もいるようだが、こちらについてはどちらも意味的には同じ。たとえば上記の例をdefine-keyを使って書くと、次のようになる。</p>
+<pre>
+(define-keyglobal-map (kbd "C-S-&lt;insert&gt;") 'add-anchor)
+</pre>
+<p>　「global-map」の代わりに「current-global-map」を使っても、基本的には同じ。Emacsのマニュアル中、キーマップ周りは「<a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Commands.html">Commands for Binding Keys</a>」にあるのでこちらもご参照を。</p>
+]]></content:encoded>
+			<wfw:commentRss>http://hylom.net/2012/01/16/emacs-keybinding-configs/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>iMac（Early 2009、20インチ）の光学ドライブを交換する</title>
+		<link>http://hylom.net/2011/12/13/changing-superdrive-on-imac-early-2009/</link>
+		<comments>http://hylom.net/2011/12/13/changing-superdrive-on-imac-early-2009/#comments</comments>
+		<pubDate>Tue, 13 Dec 2011 06:45:15 +0000</pubDate>
+		<dc:creator>hylom</dc:creator>
+				<category><![CDATA[Hacks]]></category>
+		<category><![CDATA[hack]]></category>
+		<category><![CDATA[hardware]]></category>
+		<category><![CDATA[mac]]></category>
+
+		<guid isPermaLink="false">http://hylom.net/?p=1514</guid>
+		<description><![CDATA[　自宅のメインマシンは20インチiMac（Early 2009）なのだが、2年前くらいから光学ドライブの調子が [...]]]></description>
+				<content:encoded><![CDATA[<p>　自宅のメインマシンは<a href="http://support.apple.com/kb/SP507?viewlocale=ja_JP">20インチiMac（Early 2009）</a>なのだが、2年前くらいから光学ドライブの調子が悪い。このiMacは<a href="http://store.apple.com/jp/browse/home/specialdeals/mac">整備済み製品</a>として購入したもので、HDDとメモリが増量されている。整備済み製品はときどき記載されているスペックよりも上のものが届くことがあってラッキー感があるのだが、1年間の特別保証が切れた直後あたりに調子が悪いことに気付いてしまった。</p>
+<p>　現象としては、CDを挿入しても認識されず、ウンウンうなったあとで排出されるというもの。ちょうど手持ちの音楽CDをすべてリッピングしようと思ってたときで、1日に10枚ペースで200枚くらいのCDをリッピングしたのが良くなかったような気がする。しかも、ときどきは認識されるからタチが悪い。認識されても、リッピングされた音源にノイズが載るという現象が出るため実質的に使えない状態。</p>
+<p>　有償修理に出すことも考えたのだが、お値段が数万円コースとなるため放置、外付けのドライブを付けてごまかしてたのだが、来年で購入してから3年目になるということもあり、買い換えを視野に入れて交換を行うことにした。</p>
+<p>　作業手順は<a href="http://ascii.jp/elem/000/000/059/59034/">ASCII.jp</a>に載っているとおり。<a href="http://www.ifixit.com/Teardown/iMac-Intel-20-Inch-EMC-2266-Teardown/658/1">iFixit</a>も写真が多くて参考になる。実際に作業してみて感じたコツだが、フレームや液晶の取り外しは本体を寝かせた状態ではなく、立てた状態で作業をしたほうがやりやすい。寝かせると自重で本体がやや歪むためのようだ。</p>
+<p>　交換に使用したのは、Sony OptiarcのAD-7640S。元々搭載されているのはAD-5670Sというモデルだが、OEM専用なので入手が難しい。AD-7640Sは<a href="http://www.vintagecomp.com/shop/shopdisplayproducts.asp?id=626&#038;cat=%8C%F5%2FiMac+Intel+%83V%83%8B%83o%81%5B%3Cbr%3E%0D%0AEarly+2009%2FLate+2009+%3Cbr%3E%0D%0A12%2E7mm%2FSATA">Vintage Computer</a>でもiMac用に販売されているし、2011年12月現在国内でも入手しやすい。自分は九十九電機で購入。</p>
+<p>　スロットイン型のモデルだが、ベゼルがついているので取り外して使用する。また、左側にイジェクトスイッチが付いているが、内蔵で使う場合不要。自分ははさみで切り取ってしまった。単純なスイッチなので動作上は問題ないと思われる。</p>
+<p>　さて、換装自体は無難に完了したのだが、どうもうまく動かなかった。ブート直後、丸いインジケータが表示されるまではディスクをセットできるのだが、OSの起動後はディスクを挿入しようとしてもドライブが吸い込んでくれない。OS上からドライブは正しく認識されているのだが。</p>
+<p>　再度ばらしたり組み直したりと色々試行錯誤した結果、電源投入時にディスクをセットしておくと、起動後も問題なく動作するということが判明。また、電源投入後で動作しなくなった場合、ディスクをドライブに突っ込んだ状態でスリープ状態から復帰させるとディスクを吸い込み、その後利用できるようになることも分かった。</p>
+<p>ちなみに純正のドライブでは、スリープからの復帰時にドライブの音が鳴らないようになっているが、本ドライブでは鳴る。どうもファームウェアの問題のような気がしているのだが、Appleが提供する<a href="http://support.apple.com/kb/DL892?viewlocale=ja_JP">SuperDriveファームウェア・アップデート3.0</a>は適用できなかった。</p>
+<p>ということで問題の解決に向けて依然情報収集中である。</p>
+]]></content:encoded>
+			<wfw:commentRss>http://hylom.net/2011/12/13/changing-superdrive-on-imac-early-2009/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>VirtualBoxでGNOME Shellを使う（Fedora 16）</title>
+		<link>http://hylom.net/2011/12/06/fedora16_on_virtualbox_with_gnome_shell/</link>
+		<comments>http://hylom.net/2011/12/06/fedora16_on_virtualbox_with_gnome_shell/#comments</comments>
+		<pubDate>Mon, 05 Dec 2011 16:31:57 +0000</pubDate>
+		<dc:creator>hylom</dc:creator>
+				<category><![CDATA[Hacks]]></category>
+		<category><![CDATA[fedora]]></category>
+		<category><![CDATA[gnome]]></category>
+		<category><![CDATA[virtualbox]]></category>
+
+		<guid isPermaLink="false">http://hylom.net/?p=1498</guid>
+		<description><![CDATA[　VirtualBoxでFedora 16のデスクトップを使う場合、デフォルトだとGNOME Shellが利用 [...]]]></description>
+				<content:encoded><![CDATA[<p>　VirtualBoxでFedora 16のデスクトップを使う場合、デフォルトだとGNOME Shellが利用できない。GNOME Shellの利用にはハードウェアアクセラレーションが必要なためだ。VirtualBoxの場合、Guest Additionをインストールすればハードウェアアクセラレーションが利用可能になり、GNOME Shellが利用可能になる。</p>
+<h4>VirtualBox Guest Additionのインストール</h4>
+<p>　基本的な設定は<a href="http://www.sysprobs.com/install-fedora-16-virtualbox-guest-additions-get-working-gnome-shell-inside-virtual-machine">Install Fedora 16 VirtualBox Guest Additions and Get Working Gnome Shell Inside Virtual Machine</a>という記事にある通り。</p>
+<h5>1. 仮想マシンの設定の「ディスプレイ」項目で、ビデオメモリを128MBに設定、「3Dアクセラレーションを有効化」にチェックを入れる。</h5>
+<div id="attachment_1509" class="wp-caption aligncenter" style="width: 410px"><a href="/img/blog/2011/12/vm_config1.png"><img src="/img/blog/2011/12/vm_config1-400x215.png" alt="VirtualBoxの設定" title="VirtualBoxの設定" width="400" height="215" class="size-medium wp-image-1509" /></a><p class="wp-caption-text">VirtualBoxの設定</p></div>
+<h5>2. Guest Additionのインストールにはカーネルモジュールのビルドが必要なので、カーネルヘッダーや開発ツールをインストールしておく。</h5>
+<pre>
+# yum install kernel-devel kernel-headers dkms gcc-c++
+</pre>
+<h5>3. VirtualBoxの「デバイス」−「Guest Additionsのインストール」を選択してGuest Additionsをマウントする。</h5>
+<h5>4. 下記を実行</h5>
+<pre>
+# cd /media/VBOXADDITIONS_4.1.6_74713/
+# ./VBoxLinuxAdditions.sh
+</pre>
+<h5>5. SELinuxの設定変更</h5>
+<p>　インストールされるVirtualBox Guest Addition関連ファイルのSELinuxラベルが不適切なので、変更する。</p>
+<pre>
+# cd /opt/VBoxGuestAdditions-4.1.6/lib/
+# /sbin/restorecon -v *.so 
+</pre>
+<p>　実行後、ls -Zでラベルが「textrel_shlib_t」になっていることを確認する</p>
+<pre>
+$ ls -Z
+drwxr-xr-x. root root unconfined_u:object_r:usr_t:s0   VBoxGuestAdditions
+-rwxr-xr-x. root root unconfined_u:object_r:textrel_shlib_t:s0 VBoxOGLarrayspu.so
+-rwxr-xr-x. root root unconfined_u:object_r:textrel_shlib_t:s0 VBoxOGLcrutil.so
+-rwxr-xr-x. root root unconfined_u:object_r:textrel_shlib_t:s0 VBoxOGLerrorspu.so
+-rwxr-xr-x. root root unconfined_u:object_r:textrel_shlib_t:s0 VBoxOGLfeedbackspu.so
+-rwxr-xr-x. root root unconfined_u:object_r:textrel_shlib_t:s0 VBoxOGLpackspu.so
+-rwxr-xr-x. root root unconfined_u:object_r:textrel_shlib_t:s0 VBoxOGLpassthroughspu.so
+-rwxr-xr-x. root root unconfined_u:object_r:textrel_shlib_t:s0 VBoxOGL.so
+</pre>
+<h5>6. ログアウトして再ログインする</h5>
+<p>　以上で作業完了。</p>
+<div id="attachment_1507" class="wp-caption aligncenter" style="width: 410px"><a href="/img/blog/2011/12/vm_fedora1.png"><img src="/img/blog/2011/12/vm_fedora1-400x319.png" alt="VirtualBox上のFedoraでGNOME Shellが動作している" title="VirtualBox上のFedoraでGNOME Shellが動作している" width="400" height="319" class="size-medium wp-image-1507" /></a><p class="wp-caption-text">VirtualBox上のFedoraでGNOME Shellが動作している</p></div>
+]]></content:encoded>
+			<wfw:commentRss>http://hylom.net/2011/12/06/fedora16_on_virtualbox_with_gnome_shell/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>CentOS 5.6上でXenを使って仮想環境を作るための基本設定</title>
+		<link>http://hylom.net/2011/05/26/centos-5-xen-install/</link>
+		<comments>http://hylom.net/2011/05/26/centos-5-xen-install/#comments</comments>
+		<pubDate>Thu, 26 May 2011 10:43:11 +0000</pubDate>
+		<dc:creator>hylom</dc:creator>
+				<category><![CDATA[Docs]]></category>
+		<category><![CDATA[centos]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[virtualization]]></category>
+		<category><![CDATA[xen]]></category>
+
+		<guid isPermaLink="false">http://hylom.net/?p=1390</guid>
+		<description><![CDATA[　先日MSDNを契約、テスト用に自由にOSを使えるようになったので、テスト用のCore i7マシンにXenを導 [...]]]></description>
+				<content:encoded><![CDATA[<p>　先日MSDNを契約、テスト用に自由にOSを使えるようになったので、テスト用のCore i7マシンにXenを導入して仮想マシン上でテスト環境を作ろう、という話。いままではテスト環境が必要になったら実環境上にインストール→不要になったら削除、を繰り返していたんだけど、仮想環境を使えばスナップショットも取れるし便利だろう、ということで。</p>
+<p>　ベースの環境はCentOS 5.6。CentOS 5.6上にXen環境を構築する解説はネット上にたくさんあるわけですが、その多くがGUIを使ったセットアップ方法を解説していて、コンソールベースのCentOS環境でインストールする方法の解説は少なかったので以下に手順をメモしておきます。</p>
+<p>　まず、仮想化関連パッケージを導入。</p>
+<pre>
+# yum groupinstall Virtualization
+# yum install kernel-xen
+</pre>
+<p>　Xenを動かすには専用カーネルが必要なので、/boot/grub/menu.lstを確認してXen対応カーネル（2.6.xx-xxx.x.x.el5xen）でブートされるように設定してリブート。また、xendおよびxendomainsサービスを起動するように設定しておく。</p>
+<pre>
+# /sbin/chkconfig xend on
+# /sbin/chkconfig xendomains on
+# /sbin/service xend start
+# /sbin/sercice xendomains start
+</pre>
+<p>　仮想マシンの作成とOSインストールは「virt-install」コマンドで行える。Fedora 15をインストールするなら下記のような感じに。</p>
+<pre>
+# /usr/sbin/virt-install --nographics --prompt
+Would you like a fully virtualized guest (yes or no)? This will allow you to run unmodified operating systems. no
+ What is the name of your virtual machine? fedora
+ How much RAM should be allocated (in megabytes)? 1024
+ What would you like to use as the disk (file path)? /var/lib/xen/images/fedora.img
+ How large would you like the disk (/var/lib/xen/images/fedora.img) to be (in gigabytes)? 10
+ What is the install URL? http://ftp-srv2.kddilabs.jp/Linux/distributions/fedora/releases/15/Fedora/i386/os/
+　：
+　：
+インストールを開始しています...
+ファイル .treeinfo を読出中...                             |  906 B     00:00
+ファイル vmlinuz-PAE を読出中...                           | 3.7 MB     00:00     TA
+ファイル initrd-PAE.img を読出中...                        |  94 MB     00:40     TA
+ストレージファイルを作成中...                         |  10 GB     00:00
+ドメインを作成中...                                        |    0 B     00:04
+Connected to domain fedora
+エスケープ文字は  ^] です
+[    0.000000] Reserving virtual address space above 0xf5800000
+[    0.000000] Initializing cgroup subsys cpuset
+　：
+　：
+</pre>
+<p>　コンソール上で仮想環境上のコンソールが表示され、インストールを行える。</p>
+<div id="attachment_1392" class="wp-caption aligncenter" style="width: 410px"><a href="/img/blog/2011/05/xen_f15_inst.png"><img src="/img/blog/2011/05/xen_f15_inst-400x278.png" alt="コンソール上でFedoraのインストーラを操作する" title="コンソール上でFedoraのインストーラを操作する" width="400" height="278" class="size-medium wp-image-1392" /></a><p class="wp-caption-text">コンソール上でFedoraのインストーラを操作する</p></div>
+<p>　インストール完了語は、Ctrl-]でコンソールを抜けられる。稼働中の仮想マシンは「xm list」コマンドで確認可能。</p>
+<pre>
+# /usr/sbin/xm list
+Name                                      ID Mem(MiB) VCPUs State   Time(s)
+Domain-0                                   0     2012     8 r-----    780.4
+fedora                                     2     1024     1 -b----      9.9
+</pre>
+<p>　仮想マシンのコンソールに接続するには、「xm console ＜仮想マシン名＞」を実行すればよい。コンソール接続の終了は先と同様Crtl-]。</p>
+<pre>
+# /usr/sbin/xm console fedora
+</pre>
+]]></content:encoded>
+			<wfw:commentRss>http://hylom.net/2011/05/26/centos-5-xen-install/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

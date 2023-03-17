@@ -1,0 +1,3 @@
+# crontab
+# MM HH DD MM WE CMD
+30   *  *  *  *  root cd /usr/share/grrreader/backend; /usr/bin/python feedfetcher.py > /dev/null

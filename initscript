@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+#	/etc/init.d/rrreader
+#	Rrreader RSS-Reader startup script.
+#
+# chkconfig:   345 98 2
+# description: RSS Reader service powered by Node.js.
+
+
+DAEMON_NAME=grrreader
+TARGET_SCRIPT=/var/grrreader/client/app.js
+LOGFILE=/var/log/${DAEMON_NAME}.log
+STDOUTFILE=/var/log/${DAEMON_NAME}.out
+ERRORFILE=/var/log/${DAEMON_NAME}.err
+PIDFILE=/var/run/${DAEMON_NAME}.pid
+FOREVER_DIR=/var/run/forever
+LOCKFILE=/var/lock/subsys/${DAEMON_NAME}
+
+start() {
+	echo "Starting ${DAEMON_NAME}: "
+	if [ -e $LOCKFILE ]; then
+		echo "${DAEMON_NAME} already running."
+	else
+		forever start -a -p $FOREVER_DIR --pidfile $PIDFILE -l $LOGFILE -o $STDOUTFILE -e $ERRORFILE $TARGET_SCRIPT
+		touch $LOCKFILE
+	fi
+ 	return 0
+}	
+
+stop() {
+	echo "Shutting down ${DAEMON_NAME}: "
+	forever stop $TARGET_SCRIPT
+	rm -f $LOCKFILE
+	return 0
+}
+
+case "$1" in
+    start)
+	start
+	;;
+    stop)
+	stop
+	;;
+    status)
+	forever list
+	;;
+    restart)
+    	stop
+	start
+	;;
+    *)
+	echo "Usage: ${DAEMON_NAME} {start|stop|status|restart}"
+	exit 1
+	;;
+esac
+exit $?
+

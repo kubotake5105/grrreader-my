@@ -1,0 +1,16 @@
+{
+  "name": "grdc-client",
+  "version": "0.0.6",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.3.1",
+    "jade": "*",
+    "mysql": "*",
+    "winston": "*",
+    "hogan.js": "*",
+    "bootstrap": "*"
+  }
+}
